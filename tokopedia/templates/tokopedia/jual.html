@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{judul}}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body style="background-color: rgb(201, 47, 20);">
+<div class="container">
+    <h1>{{judul}}</h1><hr>
+    
+  <form method="POST">
+    {% csrf_token %}
+    <h2>Input Barang</h2>
+    <div class="row">
+        <div class="col-md-3">
+            <input type="text" class="form-control" name="nama_barang" placeholder="Nama Barang">
+        </div>
+        <div class="col-md-3">
+            <input type="text" class="form-control" name="jumlah_barang" placeholder="Jumlah">
+        </div>
+        <div class="col-md-3">
+            <input type="text" class="form-control" name="harga_barang" placeholder="Harga">
+        </div>
+        <div class="col-md-3">
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" name="poto" id="customFile">
+                <label class="custom-file-label" for="customFile">Choose image</label>
+              </div>
+        </div>
+        <div class="col-md-3"><br>
+              <label class="mr-sm-2" for="inlineFormCustomSelect">Kategory</label>
+              <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="kategory">
+                <option value="Elektronik">Elektronik</option>
+                <option value="Fashion">Fashion</option>
+                <option value="Olahraga">Olahraga</option>
+              </select>
+        </div>
+        <div class="col-md-3"><br>
+            <label class="mr-sm-2" for="inlineFormCustomSelect">Status</label>
+            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="status">
+              <option value="Baru">Baru</option>
+              <option value="Bekas">Bekas</option>
+            </select>
+        </div>
+        <div class="col-md-3"><br>
+            <label class="mr-sm-2" for="inlineFormCustomSelect">Toko</label>
+            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="toko">
+              {% for t in toko  %}
+                <option value='{{t.id}}'>{{t.nama}}</option>   
+              {% endfor %}    
+            </select>
+        </div>
+    </div><hr><br>
+    <input type="submit" value="oke">
+    <!-- <button type="button" class="btn btn-success">Submit</button> -->
+  </form>
+</body>
+</html>
